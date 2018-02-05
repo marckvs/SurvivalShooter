@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyAttack : MonoBehaviour
+public class EnemyAttack1 : MonoBehaviour
 {
     public float timeBetweenAttacks = 0.5f;
     public int attackDamage = 10;
+
+    private int collider = 0;
 
     Animator anim;
     GameObject player;
@@ -25,10 +27,16 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerEnter (Collider other)
     {
+        if (other.gameObject == player && collider == 0)
+        {
+            anim.SetBool("Touched", true);
+            collider++;
+        }
 
-        if (other.gameObject == player)
+        if (other.gameObject == player && collider == 1)
         {
             playerInRange = true;
+            collider++;
         }
 
     }
@@ -37,9 +45,17 @@ public class EnemyAttack : MonoBehaviour
     void OnTriggerExit (Collider other)
     {
 
+        if(other.gameObject == player && collider == 0)
+        {
+            anim.SetBool("Touched", false);
+            collider--;
+        }
+
         if (other.gameObject == player)
         {
             playerInRange = false;
+            collider--;
+
         }
     }
 
