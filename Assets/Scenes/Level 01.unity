@@ -97,7 +97,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.75
+    agentRadius: 1.1
     agentHeight: 1.2
     agentSlope: 17.7
     agentClimb: 0.34
@@ -4785,6 +4785,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 199671686664797578, guid: 49c545040541b6940ba66462c4c70179,
+        type: 2}
+      propertyPath: m_SelectedEditorRenderState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95108914388589170, guid: 49c545040541b6940ba66462c4c70179,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 14c1023ea6b569c469d803947866d182, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49c545040541b6940ba66462c4c70179, type: 2}
   m_IsPrefabParent: 0
@@ -5022,7 +5032,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f5f51bb814b2fb344a86d653efa7820a, type: 2}
+  - {fileID: 2100000, guid: f6755cad4a40fa342b774c32487dbd30, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5068,8 +5078,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1484609208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19500446, y: -0.012242317, z: -7.3}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0.19500446, y: 1.5, z: -7.3}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
@@ -5105,7 +5115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 195755642}
   enemy: {fileID: 1152593556313702, guid: 49c545040541b6940ba66462c4c70179, type: 2}
-  spawnTime: 10
+  spawnTime: 5
   spawnPoints:
   - {fileID: 421803494}
 --- !u!4 &1524812164
@@ -5134,7 +5144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 195755642}
   enemy: {fileID: 1169446347111468, guid: 4764686e1191ee444a11b682ef9ee836, type: 2}
-  spawnTime: 5
+  spawnTime: 100
   spawnPoints:
   - {fileID: 124369680}
 --- !u!114 &1524812166
@@ -5150,7 +5160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 195755642}
   enemy: {fileID: 1733049501569414, guid: fd1dc911d167bae4095e495feed8be17, type: 2}
-  spawnTime: 10
+  spawnTime: 1000
   spawnPoints:
   - {fileID: 90921786}
 --- !u!1 &1544949544

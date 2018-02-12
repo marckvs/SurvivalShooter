@@ -26,13 +26,13 @@ public class ZomBunnyMovementEj3 : MonoBehaviour
     void Update ()
     {
         Debug.Log(safeZone.PlayerIsInside());
-        if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
+
+        if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && !safeZone.PlayerIsInside())
         {
             nav.SetDestination(player.transform.position);
         }
         else if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && safeZone.PlayerIsInside())
-        {
-            
+        {          
             nav.SetDestination(spawnBunny.transform.position);
         }
         else
