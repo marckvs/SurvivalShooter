@@ -7,6 +7,10 @@ public class EnemyManager : MonoBehaviour
     public float spawnTime = 3f;
     public Transform[] spawnPoints;
 
+    private int numBadBunny;
+    private int numZomBear;
+    private int numHellephant;
+
 
     void Start ()
     {
@@ -21,8 +25,11 @@ public class EnemyManager : MonoBehaviour
             return;
         }
 
+
+
         int spawnPointIndex = Random.Range (0, spawnPoints.Length);
 
         Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+
     }
 }

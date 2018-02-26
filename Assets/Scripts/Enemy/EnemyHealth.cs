@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public int scoreValue = 10;
     public AudioClip deathClip;
 
-
+    UIController UIController;
     Animator anim;
     AudioSource enemyAudio;
     ParticleSystem hitParticles;
@@ -23,8 +23,18 @@ public class EnemyHealth : MonoBehaviour
         enemyAudio = GetComponent <AudioSource> ();
         hitParticles = GetComponentInChildren <ParticleSystem> ();
         capsuleCollider = GetComponent <CapsuleCollider> ();
+        UIController = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
+
 
         currentHealth = startingHealth;
+    }
+
+    void Start()
+    {
+        if (this.tag == "ZomBunny") UIController.IncreaseNumBunny();
+        if (this.tag == "ZomBear") UIController.IncreaseNumBear();
+        if (this.tag == "Hellephant") UIController.IncreaseNumHellephant();
+
     }
 
 
@@ -59,6 +69,10 @@ public class EnemyHealth : MonoBehaviour
     void Death ()
     {
         isDead = true;
+
+        if (this.tag == "ZomBunny") UIController.DecreaseNumBunny();
+        if (this.tag == "ZomBear") UIController.DecreaseNumBear();
+        if (this.tag == "Hellephant") UIController.DecreaseNumHellephant(); ;
 
         capsuleCollider.isTrigger = true;
 

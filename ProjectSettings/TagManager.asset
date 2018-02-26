@@ -6,6 +6,12 @@ TagManager:
   tags:
   - SafeZone
   - SpawnBunny
+  - ZomBunny
+  - Hellephant
+  - ZomBear
+  - UI
+  - SphereSpawner
+  - GreenSphere
   layers:
   - Default
   - TransparentFX

@@ -3,11 +3,13 @@
 public class PlayerShooting : MonoBehaviour
 {
     public int damagePerShot = 20;
+    float infiniteDamagePerShot = Mathf.Infinity;
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
 
 
     float timer;
+    float timerGreenShot = 4;
     Ray shootRay = new Ray();
     RaycastHit shootHit;
     int shootableMask;
@@ -16,6 +18,8 @@ public class PlayerShooting : MonoBehaviour
     AudioSource gunAudio;
     Light gunLight;
     float effectsDisplayTime = 0.2f;
+    bool greenShot;
+    Color color;
 
 
     void Awake ()
@@ -27,14 +31,29 @@ public class PlayerShooting : MonoBehaviour
         gunLight = GetComponentInChildren<Light> ();
     }
 
+    void CheckGreenLight()
+    {
+        Debug.Log("green");
+    }
+
+    void OnTriggerEnter(Collider c)
+    {
+        greenShot = true;
+        CheckGreenLight();
+    }
 
     void Update ()
     {
         timer += Time.deltaTime;
-
-		if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0)
+        if (Input.GetButton("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0 && greenShot)
         {
-            Shoot ();
+            Debug.Log("greenShot");
+            greenShot = false;
+            Shoot();
+        }
+        else if (Input.GetButton("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0)
+        {
+            Shoot();
         }
 
         if(timer >= timeBetweenBullets * effectsDisplayTime)
@@ -71,9 +90,15 @@ public class PlayerShooting : MonoBehaviour
         if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))
         {
             EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
-            if(enemyHealth != null)
+            if (greenShot)
             {
-                enemyHealth.TakeDamage (damagePerShot, shootHit.point);
+                Debug.Log("infinito");
+                enemyHealth.TakeDamage((int)infiniteDamagePerShot, shootHit.point);
+            }
+
+            else if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(damagePerShot, shootHit.point);
             }
             gunLine.SetPosition (1, shootHit.point);
         }
@@ -81,5 +106,10 @@ public class PlayerShooting : MonoBehaviour
         {
             gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
         }
+    }
+
+    public void SetGreenShot(bool b)
+    {
+        greenShot = b;
     }
 }
